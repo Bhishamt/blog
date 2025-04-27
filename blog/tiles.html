@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <title>Tiles</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" v-for="(card,index) in cards" :key="index">
+                  <div class="card mt-5">
+                    <img :src="card.imgSrc" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{index+1}}{{ card.title }}</h5>
+                      <p class="card-text">{{ card.text }}</p>
+                      <a :href="card.link" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <script>
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        cards: [
+                                {
+                                    imgSrc: 'cat.png',
+                                    title: 'Card title 1',
+                                    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+                                    link: '#'
+                                },
+                                {
+                                    imgSrc: 'cat.png',
+                                    title: 'Card title 2',
+                                    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+                                    link: '#'
+                                },
+                                {
+                                    imgSrc: 'cat.png',
+                                    title: 'Card title 3',
+                                    text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+                                    link: '#'
+                                }
+                             ]
+                             
+                    }
+                }
+            })
+            app.mount('#app')
+        </script>
+</body>
+</html>

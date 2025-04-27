@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Add Blog</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 1.1rem;
+        }
+
+        input[type="text"], textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 1rem;
+        }
+
+        .success {
+            color: green;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Add New Blog</h1>
+    <!-- Form to add blog -->
+    <form id="addBlogForm" action="submit-blog.php" method="POST" enctype="multipart/form-data">
+        <label for="title">Blog Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="6" required></textarea>
+
+        <label for="image">Upload Blog Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+
+        <input type="submit" value="Add Blog">
+    </form>
+
+    <!-- Message area -->
+    <div id="message"></div>
+</div>
+
+<!-- JavaScript to handle form submission -->
+<script>
+    const form = document.getElementById('addBlogForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();  // Prevent default form submission for validation
+        
+        const formData = new FormData(form);
+
+        fetch('submit-blog.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                messageDiv.innerHTML = `<p class="success">Blog added successfully!</p>`;
+                form.reset();
+            } else {
+                messageDiv.innerHTML = `<p class="error">${data.message}</p>`;
+            }
+        })
+        .catch(error => {
+            messageDiv.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+        });
+    });
+</script>
+
+</body>
+</html>

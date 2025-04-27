@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .dashboard {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    text-align: center;
+    color: #f4f4f4;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 15px 0;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #ddd;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .blogs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .blogs-table th, .blogs-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .blogs-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    text-align: center;
+  }
+  
+  .close-btn {
+    background-color: #ccc;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+  }
+  
+  .delete-btn:hover {
+    background-color: #a71d2a;
+  }
+  
+
+  /* Form container styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  
+  /* Labels */
+  form label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Input fields and textarea */
+  form input[type="text"],
+  form textarea,
+  form input[type="file"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  
+  form input[type="text"]:focus,
+  form textarea:focus,
+  form input[type="file"]:focus {
+    border-color: #007bff;
+  }
+  
+  /* Textarea styling */
+  form textarea {
+    resize: vertical;
+  }
+  
+  /* Buttons */
+  form .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  form .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  form .btn[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  form .btn[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  form .btn.close-btn {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  form .btn.close-btn:hover {
+    background-color: #c82333;
+  }
+  

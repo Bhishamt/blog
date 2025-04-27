@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <title>Signup</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app" class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Sign Up</h3>
+                        <form @submit.prevent="submitForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" v-model="form.name" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" id="email" v-model="form.email" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" id="password" v-model="form.password" class="form-control" required minlength="6">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                        </form>
+                        <div v-if="successMessage" class="alert alert-success mt-3">
+                            {{ successMessage }}
+                        </div>
+                        <div v-if="errorMessage" class="alert alert-danger mt-3">
+                            {{ errorMessage }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    const { createApp } = Vue;
+    createApp({
+        data() {
+            return {
+                form: {
+                    name: '',
+                    email: '',
+                    password: ''
+                },
+                successMessage: '',
+                errorMessage: ''
+            }
+        },
+        methods: {
+            submitForm() {
+                // Basic validation
+                if (!this.form.name || !this.form.email || !this.form.password) {
+                    this.successMessage = '';
+                    this.errorMessage = 'Please fill out all fields.';
+                    return;
+                }
+                if (!this.validateEmail(this.form.email)) {
+                    this.successMessage = '';
+                    this.errorMessage = 'Please enter a valid email address.';
+                    return;
+                }
+                if (this.form.password.length < 6) {
+                    this.successMessage = '';
+                    this.errorMessage = 'Password must be at least 6 characters.';
+                    return;
+                }
+                // Simulate success
+                this.successMessage = 'Signup successful!';
+                this.errorMessage = '';
+                // Reset form
+                this.form.name = '';
+                this.form.email = '';
+                this.form.password = '';
+            },
+            validateEmail(email) {
+                // Simple email regex
+                return /^\S+@\S+\.\S+$/.test(email);
+            }
+        }
+    }).mount('#app');
+    </script>
+</body>
+</html>
