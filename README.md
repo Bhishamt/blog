@@ -1,4 +1,4 @@
-# blog# 📝 Blog Project
+# 📝 Blog Project
 
 Welcome to my personal Blog project! 🚀  
 This repository contains the codebase for a dynamic blogging website where users can create, edit, and view posts.
