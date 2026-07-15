@@ -8,7 +8,7 @@ This repository contains the codebase for a dynamic blogging website where users
 ## 📚 Features
 
 - ✨ Create, Edit, and Delete blog posts
-- 🧩 Responsive design (works on mobile and desktop)
+- 🧩 Responsive design (works on mobile and desktop)  
 - 🌐 Frontend with HTML, CSS, and JavaScript
 - 🛠️ Backend powered by Node.js and Express (or specify your backend)
 - 🗄️ Database support (MongoDB / MySQL / your choice)
@@ -38,3 +38,4 @@ blog/
 ├── models/
 ├── app.js (or server.js)
 └── README.md
+contact on bhishamthakur96@gmail.com
